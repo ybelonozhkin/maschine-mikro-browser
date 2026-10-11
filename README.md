@@ -15,7 +15,6 @@ See the [changelog](CHANGELOG.md) and [planned work](CHANGELOG.md#future-develop
 | Browse | Left / Right | Previous / next file type |
 | Browse | Shift + Left / Right | Previous / next product |
 | Browse | Turn encoder | Scroll results |
-| Browse | Shift + turn encoder | Original fast result scrolling |
 | Browse, FX | Shift + encoder click | Append effect to the chain |
 | Browse, Instrument / One-shot / Loop | Shift + encoder click | Load the source while retaining FX |
 | Plug-in, slot selection | Turn encoder | Previous / next plug-in slot |
