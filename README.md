@@ -2,6 +2,8 @@
 
 Spend less time reaching for the mouse. Switch browser categories and products, add effects, replace instruments or samples while keeping your FX, and answer the save prompt—all from your Mikro.
 
+Pair it with [Maschine Companion](https://github.com/ybelonozhkin/maschine-companion) to launch and close Maschine from your Mikro too—from opening the app to answering the save prompt, you can keep your hands on the controller.
+
 A Windows patch for **Maschine 3.7.1 x64 + Maschine Mikro MK3**. One install applies all changes.
 
 Version **0.2.0** adds encoder control of the save prompt.
@@ -79,6 +81,3 @@ This is an unofficial community patch.
 
 Reproducible developer checks are described in [tests/README.md](tests/README.md).
 
-## Related project
-
-[Maschine Companion](https://github.com/ybelonozhkin/maschine-companion) launches and closes the configured application from the controller, adds standby lighting and pauses while a configured DAW is running.
