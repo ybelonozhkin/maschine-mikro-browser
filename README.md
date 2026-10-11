@@ -6,29 +6,6 @@ Version **0.2.0** adds encoder control of the save prompt.
 
 See the [changelog](CHANGELOG.md) and [planned work](CHANGELOG.md#future-development).
 
-## Requirements
-
-- Windows with PowerShell 5.1 or newer.
-- The supported Maschine 3.7.1 x64 build and a Maschine Mikro MK3.
-- Administrator access for installation and restore.
-
-## Installation
-
-1. Download this repository or clone it. Keep the `patches` folder beside the scripts.
-2. Close Maschine and any DAW hosting Maschine.
-3. Double-click **Install.cmd** and approve Windows administrator access.
-4. Wait for **All Mikro browser patches installed**, then reopen Maschine.
-
-Run **Check.cmd** to check the installed version. **Restore.cmd** puts back the original EXE. Keep the backup beside `Maschine 3.exe`.
-
-The default location is `C:\Program Files\Native Instruments\Maschine 3\Maschine 3.exe`. For a custom installation location, open PowerShell as administrator and run:
-
-```powershell
-.\Patch.ps1 -Target 'D:\Native Instruments\Maschine 3\Maschine 3.exe'
-.\Patch.ps1 -Target 'D:\Native Instruments\Maschine 3\Maschine 3.exe' -Check
-.\Patch.ps1 -Target 'D:\Native Instruments\Maschine 3\Maschine 3.exe' -Restore
-```
-
 ## Controls
 
 | Mode | Control | Action |
@@ -59,6 +36,29 @@ Use **Shift + encoder click** to replace the source and keep its effects when lo
 When Maschine asks whether to save changes, the Mikro shows `Save project?` and starts on Cancel. Turn the encoder to choose Cancel, Discard or Save, then press and release it. The browser behind the prompt stays inactive. Closing the prompt with the mouse returns the controller to its previous page.
 
 For an unnamed project, Save may open a Windows filename dialog. Use the computer for that step. Missing Library, sample relocation and other message dialogs still require the computer.
+
+## Requirements
+
+- Windows with PowerShell 5.1 or newer.
+- The supported Maschine 3.7.1 x64 build and a Maschine Mikro MK3.
+- Administrator access for installation and restore.
+
+## Installation
+
+1. Download this repository or clone it. Keep the `patches` folder beside the scripts.
+2. Close Maschine and any DAW hosting Maschine.
+3. Double-click **Install.cmd** and approve Windows administrator access.
+4. Wait for **All Mikro browser patches installed**, then reopen Maschine.
+
+Run **Check.cmd** to check the installed version. **Restore.cmd** puts back the original EXE. Keep the backup beside `Maschine 3.exe`.
+
+The default location is `C:\Program Files\Native Instruments\Maschine 3\Maschine 3.exe`. For a custom installation location, open PowerShell as administrator and run:
+
+```powershell
+.\Patch.ps1 -Target 'D:\Native Instruments\Maschine 3\Maschine 3.exe'
+.\Patch.ps1 -Target 'D:\Native Instruments\Maschine 3\Maschine 3.exe' -Check
+.\Patch.ps1 -Target 'D:\Native Instruments\Maschine 3\Maschine 3.exe' -Restore
+```
 
 ## Compatibility and backup
 
