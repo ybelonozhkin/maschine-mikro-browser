@@ -18,7 +18,7 @@ local Song=NI.DATA.StateHelper.getFocusSong(App)
 if not Song or Song:getLevelTab()~=NI.DATA.LEVEL_TAB_SOUND then return end
 Kind="KEEP FX"
 else return end
-elseif Page==NI.HW.PAGE_CONTROL and self:isErasePressed() then Kind="REMOVE"
+elseif Page==NI.HW.PAGE_CONTROL and self:isShiftPressed() and self:isErasePressed() then Kind="REMOVE"
 else return end
 local Layer=NI.DATA.StateHelper.getFocusMixingLayer(App)
 if not Layer then return end

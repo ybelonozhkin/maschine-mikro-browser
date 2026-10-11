@@ -4,3 +4,11 @@
 *.zip
 *.log
 .DS_Store
+
+research/
+logs/
+native-probe/local-build/
+native-probe/
+NATIVE-DIALOGS.md
+ENCODER-NAVIGATION.md
+__pycache__/

@@ -2,22 +2,33 @@
   "software": "Maschine 3.7.1 x64",
   "controller": "Maschine Mikro MK3",
   "original_sha256": "432948f7da644f092312c1c35dbc93c74185b4a7cd1fc869e444bcc6f8b7f20b",
-  "patched_sha256": "bec744c9fc6f94d9c9fbbb9cf8671f3bf4a7c955c71cbd9ab2aa018c6bab0041",
+  "patched_sha256": "a04ebe5e2c97223f43db17ebf2eeeca36cda1a88e7563070992294a95580d4d4",
   "file_bytes": 237443056,
   "resources": {
     "browser": {
       "offset": 104625504,
-      "bytes": 3992
+      "bytes": 3992,
+      "code_bytes": 3496
     },
     "controller": {
       "offset": 104607296,
       "bytes": 17086,
-      "code_bytes": 15854
+      "code_bytes": 16577
     },
     "plugin": {
       "offset": 104684320,
       "bytes": 9074,
       "code_bytes": 6534
+    },
+    "busy": {
+      "offset": 104629504,
+      "bytes": 1914,
+      "code_bytes": 1544
     }
-  }
+  },
+  "version": "0.2.0",
+  "previous_sha256": [
+    "bec744c9fc6f94d9c9fbbb9cf8671f3bf4a7c955c71cbd9ab2aa018c6bab0041",
+    "a6bc12bbbd4d514468cbfbae86e045c779d52d3a04f410951560e0d7542b5c0a"
+  ]
 }
