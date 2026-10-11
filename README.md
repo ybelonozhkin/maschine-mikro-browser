@@ -1,6 +1,8 @@
 # Maschine Mikro MK3 browser improvements
 
-A Windows patch for **Maschine 3.7.1 x64 + Maschine Mikro MK3**. Browse file types and products with the arrows, add effects or replace a source while keeping FX, and select plug-in slots with the encoder. One install applies all changes.
+Spend less time reaching for the mouse. Switch browser categories and products, add effects, replace instruments or samples while keeping your FX, and answer the save prompt—all from your Mikro.
+
+A Windows patch for **Maschine 3.7.1 x64 + Maschine Mikro MK3**. One install applies all changes.
 
 Version **0.2.0** adds encoder control of the save prompt.
 
