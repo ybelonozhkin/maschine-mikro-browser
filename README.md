@@ -23,7 +23,7 @@ See the [changelog](CHANGELOG.md) and [planned work](CHANGELOG.md#future-develop
 | Save-changes prompt | Turn encoder | Select Cancel / Discard / Save |
 | Save-changes prompt | Encoder click | Confirm the selected action on release |
 
-The browser arrows light up when there is another item in that direction. The stock Plug-in screen, icons, parameter editing and arrows still work. Press Plug-in to return from parameters. Shift + Favorites works as before. The added load and remove commands run when you release the encoder; the display briefly shows `ADD FX`, `KEEP FX` or `REMOVE`.
+The browser arrows light up when there is another item in that direction. Press Plug-in to return from parameters. Shift + Favorites works as before. The added load and remove commands run when you release the encoder; the display briefly shows `ADD FX`, `KEEP FX` or `REMOVE`.
 
 Shift-loading works with Instrument, One-shot and Loop results. One-shots replace the source with a Sampler. Loops first prepare a Sampler, then use NI's loop-loading operation. Browser previews play the source on its own; the loaded source plays through the Sound's FX chain.
 
