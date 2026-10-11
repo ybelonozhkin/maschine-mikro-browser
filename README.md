@@ -80,4 +80,3 @@ The `patches` folder contains the custom Lua handlers. The installer reads the e
 This is an unofficial community patch.
 
 Reproducible developer checks are described in [tests/README.md](tests/README.md).
-
