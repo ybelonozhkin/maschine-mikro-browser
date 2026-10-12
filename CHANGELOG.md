@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.3.0] - 2026-10-12
+
+Navigate tags, plug-ins and channel settings with the Mikro's encoder.
+
+### Added
+
+- Tag navigation: Shift-click from results opens Characters or the deepest available Type level. Turn to select a tag, click to continue, and Shift-click to go back.
+- Left / Right switches file types from anywhere in Browse, including tag navigation. Shift + Left / Right switches products. Either action leaves the tag menu and returns to results.
+- Automatic expansion of desktop Types and Characters through a native GUI bridge, with C++ source, a build script and the compiled DLL included.
+- Encoder selection of Master, Group and Sound in Plug-in mode, with Shift-click to go back from parameters and slot lists.
+- Encoder navigation through Channel properties: Master, Group and Sound, then Input, Output, Groove and Macro. Shift-click returns from each section, including Groove opened with Variation.
+- The encoder and arrows choose items at the same level in the new navigation menus. Choices update the software view; arrow lights show the available directions.
+- Versioned runtime installation, SHA-256 checks for the installed Lua files and DLL, and runtime repair by reinstalling.
+
+### Changed
+
+- Keeping FX while replacing a source or appending an effect now uses Shift + Lock + encoder click. Shift-click in Browse opens tags or moves back through them.
+
 ## [0.2.0] - 2026-10-11
 
 Choose an action in the save prompt directly from the Mikro.
@@ -31,19 +49,16 @@ Choose an action in the save prompt directly from the Mikro.
 
 ## Future development
 
-Finished changes will be listed under Unreleased.
+Planned work is listed below.
 
-### Encoder navigation in Plug-in mode
+### VST support
 
-- **Navigate the control sections with the encoder.** Start with the two icons on the left: Channel properties or Plug-ins. Proposed order:
-  - Channel properties / Plug-ins.
-  - Master / Group / Sound.
-  - Input / Output / Groove / Macro, or the selected channel's plug-in slots.
-  - Parameters of the selected section or plug-in.
-- Turn to choose an item and click to enter it. In parameters, keep the usual encoder adjustment and arrow navigation; editing a value should not require another click.
-- Shift + encoder click goes back one level. Keep the PLUG-IN button and arrows working as they do now, along with Shift + Erase + encoder click for removal.
-- Channel properties / Plug-ins and Master / Group / Sound are independent selections in the software. The proposed sequence connects them for encoder navigation.
-- Check the available transitions and current Shift-click assignments first. Mouse and button changes must also update the encoder's navigation level.
+- **Support Maschine running as a VST in a DAW.** Check the plug-in's Lua resources and adapt the native bridge to its browser window and host process. Test navigation and loading in the hosted configuration.
+
+### Playback and event navigation
+
+- **Move the playhead with the encoder (needle jump).** Seek to a position in the current pattern or song from the controller. Decide the scope, step size and controls during implementation.
+- **Select individual events with the encoder.** Move between events in the focused Sound's pattern and select a specific event for editing. Decide the event order and controls during implementation.
 
 ### Installation and recovery
 
@@ -57,4 +72,4 @@ Finished changes will be listed under Unreleased.
 
 ### Verification
 
-- **Expand the tests.** 0.2.0 includes basic installer, restore, upgrade, rejection, save-prompt and removal-shortcut tests. Add recovery tests and Lua tests for context changes, keeping FX and slot navigation. Record model tests separately from real controller and loader tests.
+- **Expand the tests.** Add recovery and failed-load checks, and record controller tests separately from Lua models. Check native bridge compatibility when Maschine updates.

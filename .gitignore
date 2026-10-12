@@ -12,3 +12,11 @@ native-probe/
 NATIVE-DIALOGS.md
 ENCODER-NAVIGATION.md
 __pycache__/
+
+*.obj
+*.lib
+*.exp
+*.pdb
+!runtime/maschine-browser-bridge.dll
+
+/docs/local/

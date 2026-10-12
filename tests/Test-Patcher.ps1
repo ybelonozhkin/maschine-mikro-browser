@@ -10,6 +10,8 @@ if(Test-Path -LiteralPath $WorkDirectory){throw 'WorkDirectory must be a new dir
 New-Item -ItemType Directory -Path $WorkDirectory | Out-Null
 $testFile=Join-Path $WorkDirectory 'Maschine-test.exe'
 $backup=$testFile+'.browser-original-3.7.1.bak'
+# Give child patcher processes an isolated runtime installation directory.
+$env:PROGRAMDATA=Join-Path $WorkDirectory 'ProgramData'
 Copy-Item -LiteralPath $OriginalExe -Destination $testFile
 function Invoke-Patch([string[]]$Flags,[bool]$Fail=$false){
  & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $root 'Patch.ps1') -Target $testFile @Flags
@@ -21,6 +23,12 @@ Invoke-Patch @()
 if((Hash $testFile) -ne $config.patched_sha256 -or (Hash $backup) -ne $config.original_sha256){throw 'Install or backup hash mismatch.'}
 Invoke-Patch @('-Check')
 Invoke-Patch @()
+$runtimeFile=Join-Path $env:PROGRAMDATA ('MaschineMikroBrowser\'+$config.version+'\runtime.lua')
+[IO.File]::WriteAllText($runtimeFile,'damaged runtime')
+Invoke-Patch @('-Check') $true
+Invoke-Patch @()
+Invoke-Patch @('-Check')
+if((Hash $runtimeFile) -ne $config.runtime_files.'runtime.lua'){throw 'Runtime repair mismatch.'}
 Invoke-Patch @('-Restore')
 if((Hash $testFile) -ne $config.original_sha256){throw 'Restore mismatch.'}
 if($PreviousExe){

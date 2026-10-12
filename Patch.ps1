@@ -20,18 +20,38 @@ function Replace-Once([string]$Text,[string]$Before,[string]$After) {
     if (($Text.Split([string[]]@($Before),[StringSplitOptions]::None).Length - 1) -ne 1) { throw 'Unexpected source layout. No files changed.' }
     return $Text.Replace($Before,$After)
 }
+function Test-Runtime([bool]$Installed) {
+    $directory = if ($Installed) { $script:runtimeDirectory } else { Join-Path $PSScriptRoot 'runtime' }
+    foreach ($entry in $config.runtime_files.PSObject.Properties) {
+        if ($entry.Name -notmatch '^[A-Za-z0-9_.-]+$') { throw 'Invalid runtime filename.' }
+        $path = Join-Path $directory $entry.Name
+        if (-not (Test-Path -LiteralPath $path -PathType Leaf) -or
+            (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant() -ne $entry.Value) {
+            throw ('Runtime file missing or changed: ' + $path)
+        }
+    }
+}
+function Install-Runtime {
+    Test-Runtime $false
+    New-Item -ItemType Directory -Path $script:runtimeDirectory -Force | Out-Null
+    foreach ($entry in $config.runtime_files.PSObject.Properties) {
+        Copy-Item -LiteralPath (Join-Path (Join-Path $PSScriptRoot 'runtime') $entry.Name) -Destination (Join-Path $script:runtimeDirectory $entry.Name) -Force
+    }
+    Test-Runtime $true
+}
 try {
     if ($Restore -and $Check) { throw 'Use either -Restore or -Check, not both.' }
     $Target = [IO.Path]::GetFullPath($Target)
     $backup = $Target + '.browser-original-3.7.1.bak'
     $config = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'patches\compatibility.json') -Raw | ConvertFrom-Json
+    $script:runtimeDirectory = Join-Path $env:PROGRAMDATA ('MaschineMikroBrowser\' + $config.version)
     [byte[]]$bytes = [IO.File]::ReadAllBytes($Target)
     $currentBytes = $bytes
     $hash = Get-Hash $bytes
     if ($Check) {
         if ($hash -eq $config.original_sha256) { Write-Host 'Supported original Maschine 3.7.1: ready to install.' -ForegroundColor Green }
-        elseif ($hash -eq $config.patched_sha256) { Write-Host 'All Mikro browser patches are installed.' -ForegroundColor Green }
-        elseif ($hash -in $config.previous_sha256) { Write-Host 'Supported previous patch: ready to upgrade to 0.2.0.' -ForegroundColor Green }
+        elseif ($hash -eq $config.patched_sha256) { Test-Runtime $true; Write-Host 'All Mikro browser patches are installed.' -ForegroundColor Green }
+        elseif ($hash -in $config.previous_sha256) { Write-Host 'Supported previous patch: ready to upgrade to 0.3.0.' -ForegroundColor Green }
         else { throw 'Unsupported or modified EXE. This release supports one verified Maschine 3.7.1 x64 build.' }
         exit 0
     }
@@ -49,7 +69,7 @@ try {
         Write-Host 'Original Maschine restored.' -ForegroundColor Green
         exit 0
     }
-    if ($hash -eq $config.patched_sha256) { Write-Host 'All patches are already installed.' -ForegroundColor Green; exit 0 }
+    if ($hash -eq $config.patched_sha256) { Install-Runtime; Write-Host 'All patches are already installed.' -ForegroundColor Green; exit 0 }
     if ($hash -in $config.previous_sha256) {
         $bytes = [IO.File]::ReadAllBytes($backup)
         if ((Get-Hash $bytes) -ne $config.original_sha256) { throw 'Upgrade requires the verified original backup. No files changed.' }
@@ -79,6 +99,7 @@ try {
             if ([regex]::Matches($text,$pattern).Count -ne 1) { throw 'Unexpected plugin source layout.' }
             $handler = (Read-Lua 'plugin-scroll.lua').TrimEnd()
             $text = [regex]::Replace($text,$pattern,[System.Text.RegularExpressions.MatchEvaluator]{ param($match) return $handler })
+            $text = (Compact-Lua $text) + (Compact-Lua (Read-Lua 'runtime-loader.lua'))
         } else {
             $text = Read-Lua 'dialog-page.lua'
         }
@@ -111,6 +132,7 @@ try {
                 throw 'New backup verification failed. Target was not changed.'
             }
         }
+        Install-Runtime
         try { $handle.Write($modified,0,$modified.Length); $handle.Flush() }
         catch { $handle.Position=0; $handle.Write($currentBytes,0,$currentBytes.Length); $handle.Flush(); throw }
     } finally { $handle.Dispose() }
