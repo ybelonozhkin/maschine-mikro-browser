@@ -16,6 +16,7 @@ python tests\test_controls.py
 python tests\test_navigation.py
 python tests\test_load_gesture.py
 python tests\test_package.py
+python tests\test_events.py
 ```
 
 The navigation models cover tag selection and back/forward routes, subtype transitions, toggle-off, resource-arrow aliases, product navigation and LED boundaries. Their fixtures contain mocked NI interfaces. Hardware tests are recorded separately from these models.

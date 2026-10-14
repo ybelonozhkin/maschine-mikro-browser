@@ -51,7 +51,7 @@ try {
     if ($Check) {
         if ($hash -eq $config.original_sha256) { Write-Host 'Supported original Maschine 3.7.1: ready to install.' -ForegroundColor Green }
         elseif ($hash -eq $config.patched_sha256) { Test-Runtime $true; Write-Host 'All Mikro browser patches are installed.' -ForegroundColor Green }
-        elseif ($hash -in $config.previous_sha256) { Write-Host 'Supported previous patch: ready to upgrade to 0.3.0.' -ForegroundColor Green }
+        elseif ($hash -in $config.previous_sha256) { Write-Host 'Supported previous patch: ready to upgrade to 0.4.0.' -ForegroundColor Green }
         else { throw 'Unsupported or modified EXE. This release supports one verified Maschine 3.7.1 x64 build.' }
         exit 0
     }

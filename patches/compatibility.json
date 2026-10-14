@@ -2,7 +2,7 @@
   "software": "Maschine 3.7.1 x64",
   "controller": "Maschine Mikro MK3",
   "original_sha256": "432948f7da644f092312c1c35dbc93c74185b4a7cd1fc869e444bcc6f8b7f20b",
-  "patched_sha256": "982b9f6cabe24fb2fb8ac5eb3e7f390c235db40d6237189896d52bdaef239af5",
+  "patched_sha256": "ad50af72a918e549af316033612e7363678c993d0fcddcc82f2cc261feacbfd6",
   "file_bytes": 237443056,
   "resources": {
     "browser": {
@@ -26,13 +26,14 @@
       "code_bytes": 1544
     }
   },
-  "version": "0.3.0",
+  "version": "0.4.0",
   "previous_sha256": [
     "bec744c9fc6f94d9c9fbbb9cf8671f3bf4a7c955c71cbd9ab2aa018c6bab0041",
     "a6bc12bbbd4d514468cbfbae86e045c779d52d3a04f410951560e0d7542b5c0a",
     "a04ebe5e2c97223f43db17ebf2eeeca36cda1a88e7563070992294a95580d4d4",
     "81bb61f0d75b67cbb3a9d4fe6083b15089ce35a626b3376421ae7bc1ee3ea51f",
-    "720af9af76b8bf0978d9979055f2b7079fb782467c76fc5333dc42d6a3ab2f16"
+    "720af9af76b8bf0978d9979055f2b7079fb782467c76fc5333dc42d6a3ab2f16",
+    "982b9f6cabe24fb2fb8ac5eb3e7f390c235db40d6237189896d52bdaef239af5"
   ],
   "runtime_files": {
     "bridge-loader.lua": "f7a182a19317c763b70013e1746271b179c0b7d6f0ac4690355145a836ba2069",
@@ -41,8 +42,9 @@
     "load-gesture.lua": "dca2a8305fcd570d486360b5c820531a9a05bc18d2953f0262440da5054e0404",
     "maschine-browser-bridge.dll": "ea5323795b3c1ee3fa6ccde28a7791a91a21a1823d5043f9997a746a321e46fc",
     "plugin-navigation.lua": "5970a11085b99579a668dde6acec1c220250903a2b085663504bee34b5e9887f",
-    "runtime.lua": "c34df140ff1ab90b5ec2462b6748112798412816740d612b456317f804500f55",
+    "runtime.lua": "9a04970b3518d9d82543be1f6002a8a866a8a04ca59843077619ab13607673f3",
     "tag-navigation.lua": "7c9bae24a5ee455448128ab7176392bfa4e5434ec91c20b5d008d2e8b5f13523",
-    "THIRD-PARTY-NOTICES.txt": "4425a78d99ee52de4255981b5ac1cbc8636081d29d76144fafc10541ba715c71"
+    "THIRD-PARTY-NOTICES.txt": "4425a78d99ee52de4255981b5ac1cbc8636081d29d76144fafc10541ba715c71",
+    "event-navigation.lua": "e3594cc26bba78c8d04eb3bf37af8ec1fce48ae267888c8a8519f481dbac5af5"
   }
 }

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.4.0] - 2026-10-14
+
+### Added
+
+- In Events, turn the encoder to select individual notes in the focused Sound's pattern, ordered by position and then pitch.
+- Shift + encoder rotation selects a range from the starting note. Turning back shortens it; turning without Shift returns to a single note.
+
 ## [0.3.0] - 2026-10-12
 
 Navigate tags, plug-ins and channel settings with the Mikro's encoder.
@@ -58,7 +65,6 @@ Planned work is listed below.
 ### Playback and event navigation
 
 - **Move the playhead with the encoder (needle jump).** Seek to a position in the current pattern or song from the controller. Decide the scope, step size and controls during implementation.
-- **Select individual events with the encoder.** Move between events in the focused Sound's pattern and select a specific event for editing. Decide the event order and controls during implementation.
 
 ### Installation and recovery
 

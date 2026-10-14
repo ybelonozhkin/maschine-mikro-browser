@@ -8,7 +8,7 @@ Use the encoder to choose and enter items, and Shift-click to go back. The Mikro
 
 Pair it with [Maschine Companion](https://github.com/ybelonozhkin/maschine-companion) to launch and close Maschine from the controller too.
 
-Version **0.3.0** adds encoder navigation through tags, channel levels and Channel properties. See the [changelog](CHANGELOG.md).
+See the [changelog](CHANGELOG.md) for release history.
 
 ## Controls
 
@@ -26,6 +26,8 @@ Version **0.3.0** adds encoder navigation through tags, channel levels and Chann
 | Plug-in navigation menus | Encoder click | Enter the selected item |
 | Plug-in / Channel properties | Shift + encoder click | Go back one level |
 | Plug-in | Shift + Erase + encoder click | Remove the selected plug-in |
+| Events | Turn encoder | Select the previous / next note |
+| Events | Shift + turn encoder | Extend or shorten the selection from the starting note |
 | Save-changes prompt | Turn encoder | Select Cancel / Discard / Save |
 | Save-changes prompt | Encoder click | Confirm on release |
 
@@ -62,6 +64,14 @@ An ordinary encoder click uses NI's normal loading behavior, just like loading w
 
 The loaded source plays through your Sound's existing FX, so it can sound different from the browser preview.
 
+### Notes
+
+Press Events, then turn the encoder to select individual notes in the focused Sound's pattern. Notes are ordered by position, then by pitch from low to high when they start together. The selected notes are highlighted on the computer.
+
+Hold Shift while turning to select a range from the starting note. Turn back toward it to shorten the range. Turn without Shift to return to a single note.
+
+This works with MIDI note events. Audio loops use their own event mode. Notes with the same position and pitch cannot be selected separately with the encoder.
+
 ### Save-changes prompt
 
 When Maschine asks whether to save changes, the Mikro shows `Save project?` and starts on Cancel. Turn to choose Cancel, Discard or Save, then press and release the encoder.
@@ -81,7 +91,7 @@ For an unnamed project, Save may open a Windows filename dialog. Use the compute
 3. Double-click **Install.cmd** and approve Windows administrator access.
 4. Wait for **All Mikro browser patches installed**, then reopen Maschine.
 
-The package includes the compiled DLL. The installer copies the Lua files and DLL to `%PROGRAMDATA%\MaschineMikroBrowser\0.3.0` and patches the EXE. Once installation succeeds, you can move or remove the downloaded repository.
+The package includes the compiled DLL. The installer copies the Lua files and DLL to `%PROGRAMDATA%\MaschineMikroBrowser\0.4.0` and patches the EXE. Once installation succeeds, you can move or remove the downloaded repository.
 
 Run **Check.cmd** to verify the EXE and installed runtime files. Running **Install.cmd** again restores the release's runtime files. **Restore.cmd** puts back the original EXE; keep its backup beside `Maschine 3.exe`.
 
